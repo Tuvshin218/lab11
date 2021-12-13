@@ -1,0 +1,14 @@
+a{
+    text-decoration: none;
+}
+#updates{
+    margin: auto;
+    width: 800px;
+    height: 100vh;
+}
+p{
+    font-size: 0;
+}
+.mystyle{
+    font-size: 18px;
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<meta charset="utf-8"> 
+<title></title> 
+<link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+
+<div id="updates">
+</div>
+<script type="text/javascript">
+
+var xhr;
+var output,w3r,w3,i;
+if (window.XMLHttpRequest)
+  {
+  xhr=new XMLHttpRequest();
+  }
+else
+  {
+  xhr=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xhr.onreadystatechange=function()
+  {
+  if (xhr.readyState==4 && xhr.status==200)
+    {
+    output="<div>";
+    w3=xhr.responseXML.documentElement.getElementsByTagName("item");
+    for (i=0;i<w3.length;i++)
+      {
+      w3r=w3[i].getElementsByTagName("title");
+	  w3r1=w3[i].getElementsByTagName("description");
+        {
+        try
+          {
+            output=output + "<div><a href='#' onclick='myFunction()'>" + w3r[0].firstChild.nodeValue + "</a><br><p id='id' >" + w3r1[0].firstChild.nodeValue + "</p></div>";
+          }
+        catch (er)
+          {
+          output=output + "<p> </p>";
+          }
+        }
+    
+     }
+     output=output + "</div>";
+    document.getElementById('updates').innerHTML=output;
+       }
+  }
+  function myFunction() {
+    document.getElementById("id").classList.add("mystyle");
+}
+xhr.open("GET","rss.xml",true);
+xhr.send();
+
+</script>
+</body>
+</html>
